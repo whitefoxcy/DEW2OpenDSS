@@ -1,0 +1,52 @@
+functions for tree class
+
+disp(tree_name.field.tostring) : display the tree structure
+
+tree_name=tree('root node name'): create a tree with the root node
+
+tree_name.addnode('level', 'node content'): add a node to a level in the tree
+
+tree_name=tree_name.removenode('node name'): remove a node from a tree
+
+tree_name.get('node name'): get the content of a node
+
+tree_name=tree_name.set('node name', 'node content'): change the content of a node
+
+tree_name=tree_name.graft('target node', 'graft_tree'): grafting one tree onto another
+
+tree_name=tree_name.chop('target node'): chopping a node and its subtree
+
+tree_name.subtree('node name'): get the subtree for a node
+
+copy=tree('tree_name'): copy a tree and its nodes content
+
+emptyTree=tree('tree_name', 'clear'): copy a tree structure without its content
+
+copy_tree=tree('tree_name', 'content'); copy a tree structure and replaced its content
+
+result=tree_name.treefun(@function): apply a 1-argument function to the content of each node, treefun2 apply 2-arguments function
+
+tree_name.depthtree: return the depthtree of a given tree
+
+%% check number of children nodes for a node
+ot = tree(t, 1); % Create a copy-tree filled with ones
+nc = ot.recursivecumfun(@(x) sum(x) + 1);
+disp( [ t.tostring nc.tostring ] )
+
+%% searching a tree
+	strfind Search for a pattern in a tree content
+Regular expression are also implemented, if you need more elaborated searches:
+    regexp Compare two trees made of strings, using regular expressions.
+    regexpi The same, but case-insensitive.
+And there is also the basic tools for string manipulation and substitutions:
+    strrep Replace a string with another one in a tree.
+    regexprep Replace, using regular expressions.
+	
+%%find path between 2 nodes
+path = lineage.findpath(n1, n2) 
+
+%%
+getparent(node) return the index of the parent node. The root node has a parent index equals to 0.
+getchildren(node) return the list of the children of this node. Leaf nodes get an empty list. The list is returned as a line vector.
+isleaf(node) return true is this node is a leaf node.
+
